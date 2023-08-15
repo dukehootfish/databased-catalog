@@ -1,4 +1,4 @@
-/*const PERSONAL_ACCESS_TOKEN = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
+const PERSONAL_ACCESS_TOKEN = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
 const BASE_ID = 'appHQzwgShaDAx9Aw';
 
 const bookList = document.getElementById('bookList');
@@ -23,8 +23,8 @@ async function fetchBooks() {
     }
 }
 
-fetchBooks();// JavaScript source code */
-const BASE_ID = 'appHQzwgShaDAx9Aw';
+fetchBooks();// JavaScript source code 
+/*const BASE_ID = 'appHQzwgShaDAx9Aw';
 const TABLE_NAME = 'Books';
 const API_KEY = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
 
@@ -64,4 +64,4 @@ function renderBooks(records) {
   app.appendChild(booksContainer);
 }
 
-fetchBooks();
+fetchBooks();*/

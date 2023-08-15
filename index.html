@@ -2,16 +2,52 @@
 <html>
 <head>
     <title>Catalog Website</title>
+
 </head>
 <body>
-    <h1>Catalog Items</h1>
-    <ul id="item-list">
-        {% for item in items %}
-        <li>
-            <h2>{{ item['name'] }}</h2>
-            <p>{{ item['description'] }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+    <h1>Product Catalog</h1>
+    <div id="catalog"></div>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        // Load Google Sheets API
+        //<link rel="stylesheet" type="text/css" href="styles.css">
+        gapi.load('client', initClient);
+
+        // Initialize Google Sheets API client
+        function initClient() {
+            gapi.client.init({
+                apiKey: 'AIzaSyBR2WBVvpeL3uB_dlua8UGFWAPYYyruPVg',
+                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+            }).then(function () {
+                fetchData();
+            });
+        }
+
+        // Fetch data from Google Sheet
+        function fetchData() {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1ihD3GyJazqCSUO6OggaIYGLU7WnjbUER3ww6RwXQhSc',
+                range: 'Sheet1!A2:D', // Adjust range accordingly
+            }).then(function (response) {
+                var data = response.result.values;
+
+                var catalogDiv = document.getElementById('catalog');
+
+                data.forEach(function (row) {
+                    var itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+
+                    var itemName = document.createElement('h2');
+                    itemName.textContent = row[0]; // Name column
+                    itemDiv.appendChild(itemName);
+
+                    // Create and append other item details (description, price, image, etc.)
+
+                    catalogDiv.appendChild(itemDiv);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

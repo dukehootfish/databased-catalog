@@ -63,9 +63,9 @@ async function displayProducts() {
 
     const description = document.createElement('p');
     description.textContent = Description;
-
-    productCard.appendChild(image);
+      
     productCard.appendChild(name);
+    productCard.appendChild(image);
     productCard.appendChild(description);
 
     productContainer.appendChild(productCard);

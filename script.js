@@ -1,4 +1,4 @@
-const PERSONAL_ACCESS_TOKEN = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
+/*const PERSONAL_ACCESS_TOKEN = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
 const BASE_ID = 'appHQzwgShaDAx9Aw';
 
 const bookList = document.getElementById('bookList');
@@ -23,45 +23,53 @@ async function fetchBooks() {
     }
 }
 
-fetchBooks();// JavaScript source code 
-/*const BASE_ID = 'appHQzwgShaDAx9Aw';
-const TABLE_NAME = 'Books';
-const API_KEY = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
+fetchBooks();// JavaScript source code */
+const PERSONAL_ACCESS_TOKEN = 'patFPhQ2NCGDqLUJR.14c2310f47d18237673940cc7428eeec8d471ffbb4510d81d099aeec97c48fae';
+const airtableBaseId = 'appHQzwgShaDAx9Aw';
 
-const app = document.getElementById('app');
-
-async function fetchBooks() {
+async function fetchProducts() {
   try {
-    const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}?view=Grid%20view`, {
+    const response = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/Products`, {
       headers: {
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Bearer ${PERSONAL_ACCESS_TOKEN}`,
       },
     });
-    const data = await response.json();
 
-    renderBooks(data.records);
+    const data = await response.json();
+    return data.records;
   } catch (error) {
     console.error('Error fetching data:', error);
+    return [];
   }
 }
 
-function renderBooks(records) {
-  const booksContainer = document.createElement('div');
-  booksContainer.classList.add('books-container');
+async function displayProducts() {
+  const products = await fetchProducts();
 
-  records.forEach((record) => {
-    const book = record.fields;
-    const bookCard = document.createElement('div');
-    bookCard.classList.add('book-card');
-    bookCard.innerHTML = `
-      <img src="${book.Image[0].url}" alt="${book.Title}" class="book-image">
-      <h2>${book.Title}</h2>
-      <p>${book.Author}</p>
-    `;
-    booksContainer.appendChild(bookCard);
+  const productContainer = document.getElementById('product-list');
+
+  products.forEach(product => {
+    const { Name, Description, ImageUrl } = product.fields;
+
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    const image = document.createElement('img');
+    image.src = ImageUrl;
+    image.alt = Name;
+
+    const name = document.createElement('h2');
+    name.textContent = Name;
+
+    const description = document.createElement('p');
+    description.textContent = Description;
+
+    productCard.appendChild(image);
+    productCard.appendChild(name);
+    productCard.appendChild(description);
+
+    productContainer.appendChild(productCard);
   });
-
-  app.appendChild(booksContainer);
 }
 
-fetchBooks();*/
+displayProducts();

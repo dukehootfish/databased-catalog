@@ -54,12 +54,12 @@ async function displayProducts() {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
 
+    const name = document.createElement('h2');
+    name.textContent = Name;
+
     const image = document.createElement('img');
     image.src = ImageUrl;
     image.alt = Name;
-
-    const name = document.createElement('h2');
-    name.textContent = Name;
 
     const description = document.createElement('p');
     description.textContent = Description;

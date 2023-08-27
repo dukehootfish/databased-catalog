@@ -25,8 +25,8 @@ async function displayProducts() {
 
   const productContainer = document.getElementById('product-list4');
 
-  products.forEach(product => {
-    const { Name, ImageUrl, Link } = product.fields;
+  products.forEach(city => {
+    const { Name, ImageUrl, Link } = city.fields;
 
     const productCard = document.createElement('div');
     productCard.classList.add('col-md-6', 'col-lg-4');

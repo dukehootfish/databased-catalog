@@ -23,7 +23,7 @@ async function fetchProducts() {
 async function displayProducts() {
   const products = await fetchProducts();
 
-  const productContainer = document.getElementById('product-list');
+  const productContainer = document.getElementById('product-list4');
 
   products.forEach(product => {
     const { Name, ImageUrl, Link } = product.fields;

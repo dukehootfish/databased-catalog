@@ -21,7 +21,7 @@ async function fetchProducts() {
 // ... (previous code)
 
 async function displayProducts() {
-  const products = await fetchProducts();
+  const products = await fetchCities();
 
   const productContainer = document.getElementById('product-list4');
 

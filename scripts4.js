@@ -4,7 +4,7 @@ const airtableBaseId = 'appHQzwgShaDAx9Aw';
 
 async function fetchProducts() {
   try {
-    const response = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/Products`, {
+    const response = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/Comps`, {
       headers: {
         Authorization: `Bearer ${PERSONAL_ACCESS_TOKEN}`,
       },
